@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./js/jquery-3.6.0.min.js">
+	//상대 경로 // 현재 폴더 밑에, (src="js/jquery-3.6.0.min.js" 이렇게 작성해도 됨)
+</script>
+<script>
+	$(document).ready(function() {
+		/* 		let pTags = document.getElementsByTagName("p")
+		 let html = pTags[0].innerHTML // 태그 까지 읽어옴
+		 let text = pTags[0].innerText //태그는 제외하고 문자만 읽어옴
+		 //pTags[1].innerHTML = '<mark>good</mark>' //mark 형광색으로 마크 되어서 나옴
+		 pTags[1].innerText = '<mark>good</mark>' // 태그까지 포함한 ''안에 있는 문장 자체가 출력됨 */
+
+		 
+		//jquery 문법 
+		let html = $('p').html()
+		let text = $('p').text()
+        let attr = $('p').attr('href')
+        
+		alert('html:' + html + '\ntext: ' + text + '\n주소: '+attr);
+
+		//버튼을 누렀을 때 이벤트 발생
+		$('#btn01').click(function() {
+			let name = $('#name').val()
+			alert('name: '+ name)
+		})
+		
+		
+		
+		$('#btn02').click(function() {
+			//a태그의 href 러퍼런스 값을 고치고 싶다.
+			$('a').attr('href',"http://www.daum.net")
+		})
+		
+		$('#btn03').click(function() {  //클릭을 했을 때 이후의 함수를 실행하고 싶다.
+			//$('p').html('<mark>문장쓰 변환</mark>') //p태그에 있는 모든 내용이 변경된다. 
+			//$('#p1').html('<mark>문장쓰 변환</mark>') //p태그에서 아이디가 p1인 태그의 내용이 변경된다. 
+			$('p').html(function(index,element){
+				console.log(index,element)
+				return '<mark>'+index+ ':' + element + '</mark>'
+			})
+		})
+
+	})
+</script>
+</head>
+<body>
+
+	<p id="p1">내 이름은 <b>홍길동</b>이고 별명은 <i>의적</i>입니다.</p>
+	<p>내 이름은 <strong>홍길순</strong>이고 별명은 <em>의적2</em>입니다.</p>
+
+	이름:
+	<input type="text" id="name">
+	<button id="btn01">입력완료</button> <br>
+	
+	<a href="http://www.naver.com">사이트로 이동</a> <button id="btn02">주소변경</button>
+	<button id="btn03">문장변환</button>
+
+</body>
+</html>

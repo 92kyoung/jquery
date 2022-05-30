@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<!-- url 통해서 경로 만들기 = 프로토콜 타입 -->
+<script
+	src="http://Localhost:9999/Lecture_web/jquery/js/jquery-3.6.0.min.js"></script>
+
+
+<!-- <script src= "/Lecture_web/jquery/js/jquery-3.6.0.min.js"> //절대경로 = uri //루트(/) 부터 시작한다
+</script>
+ -->
+
+
+
+<script src="./js/jquery-3.6.0.min.js">//상대 경로 // 현재 폴더 밑에, (src="js/jquery-3.6.0.min.js" 이렇게 작성해도 됨) 
+</script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+//cdn버전: 이렇게 쓰면 jquery.min 파일이 본 폴더에 존재하지 않아도 jquery를 사용할 수 있게 된다. 
+</script>  -->
+
+<script> //스크립트 태그 는 head 위에 위치
+
+//2. jquery 문법 : $(선택자).함수()
+$(document).ready(function() {
+	alert('hello')
+}) //document 라는 객체가 준비되었을 때 실행하라
+//매개변수로 함수를 넣김: 콜백함수
+
+//window.onload 와 달리 '$(document).ready' 를 여러번 사용할 수 있다. 하지만 실행/출력 순서는 보장할 수 없다. 
+
+
+$(function(){
+	alert('ready')
+})
+
+
+	/* 
+	 * $(document).ready(function(){
+	
+	 }) 랑 $(function(){ }) 와 동일
+	 *
+	 */
+
+/* 1. 
+//윈도우가 다 로드되면 호출하라
+window.onload = function(){
+	document.write('hello');
+	//alert('hello');
+}
+
+//onload 함수가 두개 이상 있으면 맨 마지막 함수만 실행됨
+window.onload = function(){
+	document.write('hell');
+	//alert('hello');
+}
+*/
+
+</script>
+
+
+
+</head>
+<body>
+
+</body>
+</html>
