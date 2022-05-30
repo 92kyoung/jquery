@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body{
+margin:0;
+padding:0;
+}
+div {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	position: absolute; 
+	/* 포지션은 기본으로 static으로 설정되어있다. static은 포지션을 변경시킬 수 없다 */
+	/* absolute 와 realate
+	  (예시)레프트 탑(절대적인 기준)을 기준으로 얼마큼 얼마큼 움직이겠다. 
+	  아니면 부모 태그 의 탑을 기준으로 
+	  
+	  relative
+	  : 내가 원래 있는 위치를 기준으로 움직이겠다. 
+	*/
+}
+</style>
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script>
+//크기가 백 바이 백 인 빨간색 상자를 만들겠다.
+	$(document).ready(function() {
+		$('div').animate({
+			width : '200px',
+			left : '100px'
+		    
+		},2000) /* 2초 duration 지속시간 줌 */
+	})
+</script>
+</head>
+<body>
+<div>
+</div>
+</body>
+</html>
