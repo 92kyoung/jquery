@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#searchResult {
+	width: 60%;
+	height: 1500px;
+	border: 1px solid red;
+}
+#roleResult {
+	width: 60%;
+	height: 300px;
+	border: 1px solid blue;
+}
+</style>
+<script src="/Lecture_web/jquery/js/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		$('#searchBtn').click(function(){
+			
+			//2022-05-30 을 20220530 으로 변환해줌
+			let searchDate =  $('#searchDate').val().split('-').join('')
+			
+			
+			$.ajax({
+				type: 'get'
+				, url: 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json'
+				, data: {
+					key: '72db1c31612e6423c3c957693142e86f'
+					//,targetDt:'20220531'
+					, targetDt: searchDate,
+				}, datatype: 'jsonp' //안써도 돌아감 //크로스 도메인 정책에서 위배되므로 이것을 설정한다. 
+				                     // 같은 서버 내에서 정보를 가져와야하는데 openAPI에서 데이터를 가져오니까(다른 서버) 크로스 도메인 정책에서 위배된다.
+			    , success: callback  //아래에 생성한 callback 함수 실행됨
+				, error: function() {
+					alert('실패')
+				}
+				
+			})
+		})
+		
+		
+	})
+	
+	
+	
+
+	function callback(result){ //내가 생성한 callback 함수
+		//console.log(result)
+		//console.log(result.boxOfficeResult.dailyBoxOfficeList)	
+		let list = result.boxOfficeResult.dailyBoxOfficeList
+		
+		
+		//기존에 있던 정보는 사라지게하고 다시 가져오게함(이거 없으면 조회 누르면 밑에 계속 붙음)
+		$('#searchResult').empty()
+		
+		for(let i = 0; i<list.length; i++){
+			let rank = list[i].rank
+			let name = list[i].movieNm
+			let audiCnt = list[i].audiCnt
+			let movieCd = list[i].movieCd
+			console.log(movieCd)
+			$('#searchResult').append('<h4>'+rank+'위</h4>')
+			$('#searchResult').append(`<strong>${name}</strong>(${audiCnt}명)`)
+			$('#searchResult').append('<br><button id="roleBtn">상세보기</button>')
+			$('#searchResult').append('<hr>')
+			
+		}
+	}
+	
+	$(document).ready(function(){
+		$(document).on('click','#roleBtn',function(){ //상세정보보기를 누르면
+			$('#roleBtn').click(function(){
+			
+				$.ajax({
+					type: 'get'
+						, url: 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json'
+						, data: {
+							  key: '72db1c31612e6423c3c957693142e86f'
+							  ,movieCd: '20212855',
+					   }, datatype: 'jsonp' //안써도 돌아감 //크로스 도메인 정책에서 위배되므로 이것을 설정한다. 
+						                    // 같은 서버 내에서 정보를 가져와야하는데 openAPI에서 데이터를 가져오니까(다른 서버) 크로스 도메인 정책에서 위배된다.
+					    , success: callback2  //아래에 생성한 callback 함수 실행됨
+						, error: function() {
+							alert('실패')
+						}
+				})
+			}/* ,function(){
+			$('#roleResult').remove()
+		} */)
+		})
+	})
+	
+	function callback2(result2){ //내가 생성한 callback2 함수
+		console.log(result2)
+		
+		let list2 = result2.movieInfoResult.movieInfo
+		let actor = list2.actors
+		let director = list2.directors
+		let genre = list2.genres
+		 //기존에 있던 정보는 사라지게하고 다시 가져오게함(이거 없으면 조회 누르면 밑에 계속 붙음)
+        
+	    
+	
+		$('#roleBtn').after('<div id="roleResult"></div>')
+	
+	    let directors = director[0].peopleNm
+		$('#roleResult').prepend(`감독:${directors}<br>`)
+		
+		 
+		 
+		let genres = genre[0].genreNm
+		$('#roleResult').prepend(`장르:${genres}<br>`)
+		
+	
+	
+		$('#roleResult').append('배우정보<br>')
+		
+		for(let i = 0; i<actor.length; i++){
+			
+			let actNm = actor[i].peopleNm
+			let castNm = actor[i].cast
+			
+			$('#roleResult').append(`${actNm}(${castNm}역)<br>`)
+			//$('#roleResult').append('<button id="roleBtn">상세보기</button>')
+		}  
+			//$('#roleResult').append('<hr>')
+	    
+			
+	}
+	
+	
+</script>
+</head>
+<body>
+	<h2>일별 박스오피스 조회서비스</h2>
+	조회날짜 :
+	<input type="date" id="searchDate">
+	<button id="searchBtn">조회</button>
+	<h3>조회 결과</h3>
+	<div id="searchResult"></div>
+	
+	
+</body>
+</html>
