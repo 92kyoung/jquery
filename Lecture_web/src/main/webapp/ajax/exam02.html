@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/Lecture_web/jquery/js/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('button').click(function() {
+
+			let name = $('#name').val() //이름에 입력한 벨류값을 가져옴
+			let age = $('#age').val()
+
+			let param = `name=${name}`
+			
+			/* post 방식으로 ajax 통신함 아래 1,2,3번코드와 동일한 내용  */
+			
+			let param2 = {
+					name: name
+					, age: age
+			}
+			
+			$.post('param.jsp', param2, function(result) {
+				$('#msgView').val(result)
+			})
+
+			/* 3.
+			$.post('param.jsp', {
+				name : 'hong',
+				age : 22
+			}, function(result) {
+				$('#msgView').val(result)
+			}) */
+
+			/* 	 
+			1.
+				$.post('param.jsp','name=hong&age=25',function(result){
+					$('#msgView').val(result)
+				}) 
+				
+			 */
+
+			/* 	2.	$.ajax({
+
+						url : 'param.jsp', //서버에게 param.jsp 파일에 있는 내용을 나에게 줘라고 요청
+						type : 'post', //or 'get'
+						//data : 'name=hong&age=25',
+						data : {
+							name : name,
+							age : age
+						},
+						success : function(data) {
+							$('#msgView').val(data)
+						},
+						error : function() {
+							alert('실패')
+						}
+
+					}) */
+
+			/* 	
+				$.ajax({
+
+				 url : 'param.jsp', //서버에게 param.jsp 파일에 있는 내용을 나에게 줘라고 요청
+				 type : 'get',
+				 //data : 'name=hong&age=25',
+				 data:{
+				 name : 'hong'
+				 , age : 25
+				 },
+				 success : function(data) {
+				 $('#msgView').val(data)
+				 },
+				 error : function() {
+				 alert('실패')
+				 }
+
+				 }) 
+			 */
+
+		})
+	})
+</script>
+</head>
+<body>
+	<textarea rows="10" cols="80" id="msgView"></textarea>
+	<br> 이름 :
+	<input type="text" name="name" id="name">
+	<br> 나이 :
+	<input type="text" name="age" id="age">
+	<br>
+	<button>전송</button>
+</body>
+</html>
