@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		//json 형태로
+		//h1태그에 이벤트를 정의하고 싶어
+		//h1 태그에 대한 이벤트 함수들을 json 형태로 모아서 정리한다.
+		//json 형태에서는 hover를 사용못함
+		$('h1').on({
+			click : function(){
+				$(this).css('color','red')
+			},mouseleave : function(){
+				$(this).css('background-color','whie')
+			},
+			mouseenter : function(){
+				$(this).css({
+					'background-color':'yellow', //''해도되고 안해도되고
+					 'color' : 'red'
+					})
+			} 
+		})
+		
+		
+		//2. hover
+		
+	/* 	$('h1').click(function(){
+			$(this).css('color','red') //h1을 쓰면안됨. 클릭한 대상만 적용해야하기때문에 this로 설정한다. h1으로 하면 하나만 클릭해도 h1 3개가 모두가 다 바뀐다. 
+		})
+
+		//mouseenter와 mouseleave를 합친 것이 hover이다.
+		//hover는 함수 2개를 인자로 받는다 (enter 일때, leave일때)
+		
+		$('h1').hover(function(){
+			//enter 함수
+			$(this).css('background-color','lightgray')
+		}, function(){
+			//leave 함수
+			$(this).css('background-color','white')
+		}) */
+		
+		
+		
+		//1. mouseenter, mouseleave
+		
+		/* $('h1').mouseenter(function(){
+			$(this).css('background-color','lightgray')
+		})
+		
+		$('h1').mouseleave(function(){
+			$(this).css('background-color','white')
+		}) */
+	})
+</script>
+</head>
+<body>
+	<h1>첫번째 문장</h1>
+	<h1>두번째 문장</h1>
+	<h1>세번째 문장</h1>
+</body>
+</html>

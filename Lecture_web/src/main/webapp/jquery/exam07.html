@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img {
+	width: 150px;
+	height: 150px;
+	float: left;
+}
+
+button {
+	height: 150px;
+	float: left;
+}
+
+div {
+	width: 700px;
+	heigt: 10 px;
+}
+</style>
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$('#prevBtn').click(function() {
+			//$('img').eq(n) //img의 n번째의 사진이라는 의미
+			//img의 첫번째 , 마지막을 접근하는 함수 : first() / last()
+			$('img').first().appendTo('span')
+		})
+
+		$('#nextBtn').click(function() {
+			$('img').last().prependTo('span')
+		})
+
+		//2초 간격마다 실행해야한다. 
+		//setInterval
+
+		//clearInterval : interval  중지 
+
+		let intervalId = setInterval(function() {
+			//강제적으로 어떤 이벤트를 발생시키겠다. 
+			//$('#nextBtn').click()  아래와 동일한 코드
+			$('#nextBtn').trigger('click')
+
+		}, 1000)
+
+		$('#stop').click(function() {
+			clearInterval(intervalId)
+		})
+	})
+</script>
+</head>
+<body>
+	<button id="prevBtn">PREV</button>
+
+	<!-- span 대신 div 쓰면 버튼이 한줄에 안나오게 된다. 왜냐하면 div는 블록 지정이기 때문이다.
+	     옆으로 붙이고 싶으면 img 스타일 태그에 float:left; 를 추가한다. 이거쓰면 clear left 써야함
+	   -->
+
+	<span> <img src="image/dog01.jpg"> 
+	       <img src="image/dog02.jpg"> 
+	       <img src="image/dog03.jpg">
+	       <img src="image/dog04.jpg">
+	</span>
+
+	<button id="nextBtn">NEXT</button>
+
+	<div>
+		<button id="stop">stop</button>
+	</div>
+
+</body>
+</html>
