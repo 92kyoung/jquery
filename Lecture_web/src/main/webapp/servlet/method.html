@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- http://localhost:999/Lecture-web/method url에 요청하는 형태 만들기
+	  1. MethodServlet.java 파일 생성
+	  2. web.xml에 servlet mapping
+	
+	 -->
+	<form action="/Lecture-web/method" method="get">  <!-- action="/Lecture-web/method 
+	                                                       <form> 태그의 action 속성은 폼 데이터(form data)를 서버로 보낼 때 해당 데이터가 도착할 URL을 명시합니다. -->
+		Id: <input type="text" name="id"> 
+		<input type="submit" value="get방식호출"> <!-- 제출 버튼 같은 역할 --> 
+	</form>
+	
+	<form action="/Lecture-web/method" method="post">
+		Id: <input type="text" name="id"> 
+		<input type="submit" value="post 방식식호출">
+	</form>
+	
+	
+	<form action="/Lecture-web/exam" method="get">
+		이름: <input type="text" name="name"> 
+		취미: <input type="text" name="hobby">
+		
+		<input type="submit" value="get 방식식호출">
+	</form>
+	<form action="/Lecture-web/servlet/exam" method="get">
+		이름: <input type="text" name="name"> 
+		취미: 
+		<input type="checkbox" name="hobby" value="reading"> reading 
+		<!-- value를 지정안하면 value에 on/off가 날라가는데 value 지정하면 reading이 넘어간다.  -->
+		
+		<input type="checkbox" name="hobby" value="music"> music
+		<input type="checkbox" name="hobby" value="sleeping"> sleeping
+		
+		<input type="submit" value="get 방식식호출">
+	</form>
+	
+</body>
+</html>

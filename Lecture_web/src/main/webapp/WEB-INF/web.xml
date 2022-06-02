@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>Lecture_web</display-name>
+  <display-name>Lecture-web</display-name>
+  
+  <!-- 가상의 url 생성하기 
+  		http:localhost:9999/Lecture-Web/hello 요청시
+  		kr.ac.kopo.servlet.HelloServelt.java가 실행되도록 mapping
+  -->
+  
+  <servlet>
+  	<servlet-name>hello</servlet-name>
+  	<servlet-class>kr.ac.kopo.servlet.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>hello</servlet-name>
+  	<url-pattern>/hello</url-pattern> 
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>hello</servlet-name>
+  	<url-pattern>/hi</url-pattern> 
+  </servlet-mapping> 
+  
+  
+  <servlet>
+  	<servlet-name>method</servlet-name>
+  	<servlet-class>kr.ac.kopo.servlet.MethodServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>method</servlet-name>
+  	<url-pattern>/method</url-pattern>
+  </servlet-mapping>
+  
+ <!--  
+    <servlet>
+  	<servlet-name>exam</servlet-name>
+  	<servlet-class>kr.ac.kopo.servlet.ExamServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>exam</servlet-name>
+  	<url-pattern>/servlet/exam</url-pattern>
+  </servlet-mapping>
+  -->
+  
+  <!-- servlet3.0 부터는 xml에서 작성한 서블릿 매핑을 .java 파일에서 어노테이션으로 대체할 수 있게 되었다.  -->
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
