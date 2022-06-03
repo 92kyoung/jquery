@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>개인 정보 입력</h2>
+<form action="/Lecture-web/pInfoInput" method="post">
+	이 름 : <input type="text" name="name"> <br> 
+	아 이 디 : <input type="text" name="id"> <br>
+	패스워드 : <input type="password" name="pwd"> <br> 
+	성 별 : <input type="radio" name="sex" value="남자"> 남자
+		   <input type="radio" name="sex" value="여자">여자<br>
+	메일 수신 여부: <input type="checkbox" name="mail1" value="공지메일"> 공지 메일
+				<input type="checkbox" name="mail2" value="광고메일"> 광고 메일
+				<input type="checkbox" name="mail3" value="배송확인메일"> 배송 확인 메일
+    
+    <br>
+    
+    직업: <select name="job">
+    <option value="회사원">회사원</option>
+    <option value="학생">학생</option>
+    <option value="기타">기타</option>
+    </select>
+    <br>
+    <input type="reset" value="취소">
+    <input type="submit" value="확인">
+
+
+
+</form>
+</body>
+</html>

@@ -31,6 +31,18 @@
   </servlet-mapping>
   
  <!--  
+   <servlet>
+  	<servlet-name>pInfoInput</servlet-name>
+  	<servlet-class>kr.ac.kopo.servlet.PInfoResultServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>pInfoInput</servlet-name>
+  	<url-pattern>/pInfoInput</url-pattern>
+  </servlet-mapping> 
+  -->
+  
+  
+ <!--  
     <servlet>
   	<servlet-name>exam</servlet-name>
   	<servlet-class>kr.ac.kopo.servlet.ExamServlet</servlet-class>
