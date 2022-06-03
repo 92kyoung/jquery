@@ -21,8 +21,6 @@ public class PInfoResultServlet extends HttpServlet{
 		String pwd = request.getParameter("pwd"); 
 		String sex = request.getParameter("sex"); 
 		String job = request.getParameter("job"); 
-		//String [] mail = request.getParameterValues("mail");
-	    //String [] mailRecieve={"공지메일","광고메일","배송확인메일"};
 	    
 		String recieve_noctMail=request.getParameter("mail1");
 	    String recieve_adMail=request.getParameter("mail2");
