@@ -47,6 +47,7 @@ public class MethodServlet extends HttpServlet {
 		out.println("     파라미터 (id)	:	" + id + "<br>");
 		out.println("     요청방식	:	" + method + "<br>");
 		out.println("     uri	:	" + uri + "<br>");
+		out.println("     url	:	" + url + "<br>");
 		out.println("     ====================================<br> ");
 		out.println("	</body>");
 		out.println("</html>");
