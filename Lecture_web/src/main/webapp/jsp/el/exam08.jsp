@@ -47,6 +47,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	성공/실패? ${ boardList[0].title }<br>
+	
+
 </body>
 </html>
